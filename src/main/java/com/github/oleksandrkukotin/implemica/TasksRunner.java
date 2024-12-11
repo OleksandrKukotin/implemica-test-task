@@ -1,23 +1,26 @@
 package com.github.oleksandrkukotin.implemica;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class TasksRunner {
 
-    public void CorrectParenthesesTask() {
+    private static final Logger logger = Logger.getLogger(TasksRunner.class.getName());
+
+    public void correctParenthesesTask() {
         Scanner scanner = new Scanner(System.in);
         int n = -1;
 
         // Input validation loop
         while (n < 0) {
-            System.out.print("Enter N (number of pairs of parentheses): ");
+            logger.info("Enter N (number of pairs of parentheses): ");
             if (scanner.hasNextInt()) {
                 n = scanner.nextInt();
                 if (n < 0) {
-                    System.out.println("Please enter a non-negative integer.");
+                    logger.warning("Please enter a non-negative integer.");
                 }
             } else {
-                System.out.println("Invalid input. Please enter a non-negative integer.");
+                logger.warning("Invalid input. Please enter a non-negative integer.");
                 scanner.next(); // Clear invalid input
             }
         }
@@ -28,8 +31,9 @@ public class TasksRunner {
         for (int i = 1; i <= n; i++) {
             catalan[i] = calculateCatalanForIndex(catalan, i);
         }
-
-        System.out.println("Number of correct parenthesis expressions: " + catalan[n]);
+        String output = "Number of correct parenthesis expressions: " + catalan[n];
+        logger.fine(output);
+        scanner.close();
     }
 
     private long calculateCatalanForIndex(long[] catalan, int index) {
