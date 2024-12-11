@@ -3,11 +3,11 @@ package com.github.oleksandrkukotin.implemica;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-public class TasksRunner {
+public class CorrectParenthesesTask {
 
-    private static final Logger logger = Logger.getLogger(TasksRunner.class.getName());
+    private static final Logger logger = Logger.getLogger(CorrectParenthesesTask.class.getName());
 
-    public void correctParenthesesTask() {
+    public void run() {
         Scanner scanner = new Scanner(System.in);
         int n = -1;
 
@@ -32,7 +32,7 @@ public class TasksRunner {
             catalan[i] = calculateCatalanForIndex(catalan, i);
         }
         String output = "Number of correct parenthesis expressions: " + catalan[n];
-        logger.fine(output);
+        logger.info(output);
         scanner.close();
     }
 
@@ -43,5 +43,4 @@ public class TasksRunner {
         }
         return sum;
     }
-
 }
